@@ -35,9 +35,9 @@ namespace LayoutSnapshot
             this.checkBoxLaunchIfNotOpen = new System.Windows.Forms.CheckBox();
             this.buttonApply = new System.Windows.Forms.Button();
             this.buttonEditProfiles = new System.Windows.Forms.Button();
-            this.timerCheckWindowsOpened = new System.Windows.Forms.Timer(this.components);
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.labelLog = new System.Windows.Forms.Label();
+            this.timerCheckWindowsOpened = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,11 +107,6 @@ namespace LayoutSnapshot
             this.buttonEditProfiles.UseVisualStyleBackColor = true;
             this.buttonEditProfiles.Click += new System.EventHandler(this.buttonEditProfiles_Click);
             // 
-            // timerCheckWindowsOpened
-            // 
-            this.timerCheckWindowsOpened.Interval = 500;
-            this.timerCheckWindowsOpened.Tick += new System.EventHandler(this.timerCheckWindowsOpened_Tick);
-            // 
             // progressBar
             // 
             this.progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -130,6 +125,11 @@ namespace LayoutSnapshot
             this.labelLog.TabIndex = 5;
             this.labelLog.Text = "label1";
             this.labelLog.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // timerCheckWindowsOpened
+            // 
+            this.timerCheckWindowsOpened.Interval = 500;
+            this.timerCheckWindowsOpened.Tick += new System.EventHandler(this.timerCheckWindowsOpened_Tick);
             // 
             // FormApplyProfile
             // 

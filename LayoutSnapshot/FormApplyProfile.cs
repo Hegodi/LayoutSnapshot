@@ -20,6 +20,7 @@ namespace LayoutSnapshot
 
         bool mOpeningWindows = false;
         Thread mWorkerThread = null;
+        int mNumberErrorsExecutables = 0;
         public FormApplyProfile()
         {
             InitializeComponent();
@@ -108,6 +109,7 @@ namespace LayoutSnapshot
                     }
 
                     labelLog.Text += "Openning missing windows ("  + mListWindowsToOpen.Count + " windows to open)\n";
+                    mNumberErrorsExecutables = 0;
                     mWorkerThread = new Thread(WorkerThread);
                     mWorkerThread.Start();
                     progressBar.Maximum = mProfiles[comboBoxProfiles.SelectedIndex].windowSnapshots.Count;
@@ -132,8 +134,16 @@ namespace LayoutSnapshot
 
             foreach (WindowSnapshot windowSnapshot in mListWindowsToOpen)
             {
+                try
+                {
                 System.Diagnostics.Process.Start(windowSnapshot.Executable);
                 Thread.Sleep(200);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Command: " + windowSnapshot.Executable + " Failed: " + e.Message);
+                    mNumberErrorsExecutables++;
+                }
             }
         }
 
@@ -151,17 +161,28 @@ namespace LayoutSnapshot
             {
                 if (windowsExpected.Contains(process.ProcessName))
                 {
-                    windowsExpected.Remove(process.ProcessName);
+                    WindowSnapshot procWin = new WindowSnapshot(process);
+                    if (procWin.HasWindow)
+                    {
+                        windowsExpected.Remove(process.ProcessName);
+                    }
                 }
             }
 
-            int numWindowsLeft = windowsExpected.Count;
+            int numWindowsLeft = windowsExpected.Count - mNumberErrorsExecutables;
             progressBar.Value = numWindowsExpected - numWindowsLeft;
             if (numWindowsLeft == 0)
             {
                 timerCheckWindowsOpened.Stop();
                 mProfiles[comboBoxProfiles.SelectedIndex].Apply();
-                labelLog.Text += "Done.\n";
+                if (mNumberErrorsExecutables > 0)
+                {
+                    labelLog.Text += "Done (" + mNumberErrorsExecutables.ToString()  + " window failed to open).\n";
+                }
+                else
+                {
+                    labelLog.Text += "Done. \n";
+                }
                 Reset();
             }
 

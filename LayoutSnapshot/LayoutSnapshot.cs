@@ -30,9 +30,14 @@ namespace LayoutSnapshot
                 {
                     if (windowsSnapshotUnused[i].ProcessName == process.ProcessName)
                     {
-                        windowsSnapshotUnused[i].Apply(process);
-                        windowsSnapshotUnused.RemoveAt(i);
-                        break;
+                        WindowSnapshot procWin = new WindowSnapshot(process);
+                        if (procWin.IsRelevant)
+                        {
+                            Console.WriteLine(process.ProcessName);
+                            windowsSnapshotUnused[i].Apply(process);
+                            windowsSnapshotUnused.RemoveAt(i);
+                            break;
+                        }
                     }
                 }
             }

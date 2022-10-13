@@ -17,7 +17,6 @@ namespace LayoutSnapshot
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormApplyProfile());
-            //Application.Run(new FormEditProfiles());
         }
     }
 }

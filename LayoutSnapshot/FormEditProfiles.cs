@@ -4,12 +4,17 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace LayoutSnapshot
 {
     public partial class FormEditProfiles : Form
     {
         List<LayoutSnapshot> mLayoutSnapshots;
+
+        delegate bool EnumThreadDelegate(IntPtr hWnd, IntPtr lParam);
+        [DllImport("user32.dll")]
+        static extern bool EnumThreadWindows(int dwThreadId, EnumThreadDelegate lpfn, IntPtr lParam);
 
         int mXmin = 0;
         int mYmin = 0;
@@ -19,6 +24,17 @@ namespace LayoutSnapshot
         int mX0 = 0;
         int mY0 = 0;
         bool mIsDirty = false;
+
+        static IEnumerable<IntPtr> EnumerateProcessWindowHandles(int processId)
+        {
+            var handles = new List<IntPtr>();
+
+            foreach (ProcessThread thread in Process.GetProcessById(processId).Threads)
+                EnumThreadWindows(thread.Id,
+                    (hWnd, lParam) => { handles.Add(hWnd); return true; }, IntPtr.Zero);
+
+            return handles;
+        }
 
         LayoutSnapshot mLayoutSelected = null;
 
@@ -82,6 +98,7 @@ namespace LayoutSnapshot
                     continue;
                 }
 
+
                 if (!String.IsNullOrEmpty(process.MainWindowTitle))
                 {
                     WindowSnapshot snapshot = new WindowSnapshot(process);
@@ -134,7 +151,7 @@ namespace LayoutSnapshot
             listBoxWindows.Items.Clear();
             foreach (WindowSnapshot windowSnapshot in mLayoutSelected.windowSnapshots)
             {
-                listBoxWindows.Items.Add(windowSnapshot.ProcessName);
+                listBoxWindows.Items.Add(windowSnapshot.GetText());
             }
         }
 
@@ -323,6 +340,14 @@ namespace LayoutSnapshot
             if (textBoxRename.Text.Contains(","))
             {
                 textBoxRename.Text = textBoxRename.Text.Replace(",", "");
+            }
+
+            if (mLayoutSelected != null)
+            {
+                if (textBoxRename.Text != mLayoutSelected.name)
+                {
+                    SetDirty(true);
+                }
             }
         }
 

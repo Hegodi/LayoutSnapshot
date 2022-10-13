@@ -45,6 +45,14 @@ namespace LayoutSnapshot
             height = rect.Bottom - rect.Top;
             isRelevant = width > 1 && height > 1 && !IsIconic(process.MainWindowHandle);
         }
+
+        public static bool IsWindowValid(IntPtr handle)
+        {
+            RECT rect;
+            GetWindowRect(handle, out rect);
+            return rect.Right - rect.Left > 1 && rect.Bottom - rect.Top > 1;
+        }
+
         public WindowSnapshot()
         {
             x = 0;
@@ -70,10 +78,12 @@ namespace LayoutSnapshot
         public string ProcessName { get { return processName; } }
         public Rectangle Bounds { get { return new Rectangle(x, y, width, height); } }
         public string Executable { get { return executable; } }
+        public bool HasWindow { get { return width > 1 && height > 1; } }
 
         public string GetText()
         {
-            return processName + "  pos=(" + x + "," + y + ")  size=" + width + ", " + height +")"; 
+            string[] chunks = executable.Split('\\');
+            return processName + " (" + chunks[chunks.Length - 1] + ")";
         }
 
         public bool IsRelevant { get { return isRelevant; } }
@@ -104,8 +114,8 @@ namespace LayoutSnapshot
         }
         public void Apply(Process process)
         {
-            int flag = 0x0040;
-            SetWindowPos(process.MainWindowHandle, 0, x, y, width, height, flag);
+            int flag = 0x4000;
+            SetWindowPos(process.MainWindowHandle, 0 /*HWND_TOP*/, x, y, width, height, flag);
         }
 
     }

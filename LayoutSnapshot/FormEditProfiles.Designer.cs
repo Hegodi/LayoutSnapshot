@@ -70,7 +70,7 @@ namespace LayoutSnapshot
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 280F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Controls.Add(this.panelLayout, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel2, 0, 0);
@@ -86,9 +86,9 @@ namespace LayoutSnapshot
             // 
             this.panelLayout.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panelLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelLayout.Location = new System.Drawing.Point(183, 3);
+            this.panelLayout.Location = new System.Drawing.Point(283, 3);
             this.panelLayout.Name = "panelLayout";
-            this.panelLayout.Size = new System.Drawing.Size(518, 456);
+            this.panelLayout.Size = new System.Drawing.Size(418, 456);
             this.panelLayout.TabIndex = 4;
             this.panelLayout.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLayout_Paint);
             // 
@@ -107,7 +107,7 @@ namespace LayoutSnapshot
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(174, 456);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(274, 456);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // buttonSnapshot
@@ -115,7 +115,7 @@ namespace LayoutSnapshot
             this.buttonSnapshot.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonSnapshot.Location = new System.Drawing.Point(3, 424);
             this.buttonSnapshot.Name = "buttonSnapshot";
-            this.buttonSnapshot.Size = new System.Drawing.Size(168, 29);
+            this.buttonSnapshot.Size = new System.Drawing.Size(268, 29);
             this.buttonSnapshot.TabIndex = 8;
             this.buttonSnapshot.Text = "Refresh";
             this.buttonSnapshot.UseVisualStyleBackColor = true;
@@ -132,7 +132,7 @@ namespace LayoutSnapshot
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(168, 29);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(268, 29);
             this.tableLayoutPanel3.TabIndex = 9;
             // 
             // buttonRemoveWindow
@@ -140,7 +140,7 @@ namespace LayoutSnapshot
             this.buttonRemoveWindow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonRemoveWindow.Location = new System.Drawing.Point(3, 3);
             this.buttonRemoveWindow.Name = "buttonRemoveWindow";
-            this.buttonRemoveWindow.Size = new System.Drawing.Size(162, 23);
+            this.buttonRemoveWindow.Size = new System.Drawing.Size(262, 23);
             this.buttonRemoveWindow.TabIndex = 1;
             this.buttonRemoveWindow.Text = "Remove Window";
             this.buttonRemoveWindow.UseVisualStyleBackColor = true;
@@ -152,7 +152,8 @@ namespace LayoutSnapshot
             this.listBoxWindows.FormattingEnabled = true;
             this.listBoxWindows.Location = new System.Drawing.Point(3, 3);
             this.listBoxWindows.Name = "listBoxWindows";
-            this.listBoxWindows.Size = new System.Drawing.Size(168, 370);
+            this.listBoxWindows.ScrollAlwaysVisible = true;
+            this.listBoxWindows.Size = new System.Drawing.Size(268, 370);
             this.listBoxWindows.TabIndex = 10;
             this.listBoxWindows.SelectedIndexChanged += new System.EventHandler(this.listBoxWindows_SelectedIndexChanged);
             // 
