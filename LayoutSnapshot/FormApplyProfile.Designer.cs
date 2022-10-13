@@ -29,11 +29,15 @@ namespace LayoutSnapshot
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.comboBoxProfiles = new System.Windows.Forms.ComboBox();
             this.checkBoxLaunchIfNotOpen = new System.Windows.Forms.CheckBox();
             this.buttonApply = new System.Windows.Forms.Button();
             this.buttonEditProfiles = new System.Windows.Forms.Button();
+            this.timerCheckWindowsOpened = new System.Windows.Forms.Timer(this.components);
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.labelLog = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,17 +48,20 @@ namespace LayoutSnapshot
             this.tableLayoutPanel1.Controls.Add(this.comboBoxProfiles, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.checkBoxLaunchIfNotOpen, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.buttonApply, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.buttonEditProfiles, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.buttonEditProfiles, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.progressBar, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.labelLog, 0, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(285, 162);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(285, 283);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // comboBoxProfiles
@@ -92,7 +99,7 @@ namespace LayoutSnapshot
             // buttonEditProfiles
             // 
             this.buttonEditProfiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonEditProfiles.Location = new System.Drawing.Point(3, 140);
+            this.buttonEditProfiles.Location = new System.Drawing.Point(3, 261);
             this.buttonEditProfiles.Name = "buttonEditProfiles";
             this.buttonEditProfiles.Size = new System.Drawing.Size(279, 19);
             this.buttonEditProfiles.TabIndex = 3;
@@ -100,11 +107,35 @@ namespace LayoutSnapshot
             this.buttonEditProfiles.UseVisualStyleBackColor = true;
             this.buttonEditProfiles.Click += new System.EventHandler(this.buttonEditProfiles_Click);
             // 
+            // timerCheckWindowsOpened
+            // 
+            this.timerCheckWindowsOpened.Interval = 500;
+            this.timerCheckWindowsOpened.Tick += new System.EventHandler(this.timerCheckWindowsOpened_Tick);
+            // 
+            // progressBar
+            // 
+            this.progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.progressBar.Location = new System.Drawing.Point(3, 108);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(279, 14);
+            this.progressBar.TabIndex = 4;
+            // 
+            // labelLog
+            // 
+            this.labelLog.AutoSize = true;
+            this.labelLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelLog.Location = new System.Drawing.Point(3, 125);
+            this.labelLog.Name = "labelLog";
+            this.labelLog.Size = new System.Drawing.Size(279, 133);
+            this.labelLog.TabIndex = 5;
+            this.labelLog.Text = "label1";
+            this.labelLog.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
             // FormApplyProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(285, 162);
+            this.ClientSize = new System.Drawing.Size(285, 283);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormApplyProfile";
@@ -122,5 +153,8 @@ namespace LayoutSnapshot
         private System.Windows.Forms.CheckBox checkBoxLaunchIfNotOpen;
         private System.Windows.Forms.Button buttonApply;
         private System.Windows.Forms.Button buttonEditProfiles;
+        private System.Windows.Forms.Timer timerCheckWindowsOpened;
+        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Label labelLog;
     }
 }

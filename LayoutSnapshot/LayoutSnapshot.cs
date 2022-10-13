@@ -22,13 +22,17 @@ namespace LayoutSnapshot
         public void Apply()
         {
             Process[] processlist = Process.GetProcesses();
+            List<WindowSnapshot> windowsSnapshotUnused = new List<WindowSnapshot>(windowSnapshots);
+
             foreach (Process process in processlist)
             {
-                for (int i=0; i<windowSnapshots.Count; i++)
+                for (int i=0; i< windowsSnapshotUnused.Count; i++)
                 {
-                    if (windowSnapshots[i].ProcessName == process.ProcessName)
+                    if (windowsSnapshotUnused[i].ProcessName == process.ProcessName)
                     {
-                        windowSnapshots[i].Apply(process);
+                        windowsSnapshotUnused[i].Apply(process);
+                        windowsSnapshotUnused.RemoveAt(i);
+                        break;
                     }
                 }
             }

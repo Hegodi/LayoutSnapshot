@@ -69,6 +69,7 @@ namespace LayoutSnapshot
         public int Height { get { return height; } }
         public string ProcessName { get { return processName; } }
         public Rectangle Bounds { get { return new Rectangle(x, y, width, height); } }
+        public string Executable { get { return executable; } }
 
         public string GetText()
         {
