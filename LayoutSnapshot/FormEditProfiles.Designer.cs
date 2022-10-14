@@ -32,7 +32,6 @@ namespace LayoutSnapshot
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEditProfiles));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.panelLayout = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonSnapshot = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -46,11 +45,15 @@ namespace LayoutSnapshot
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonApply = new System.Windows.Forms.Button();
             this.buttonDiscardChanges = new System.Windows.Forms.Button();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.panelLayout = new System.Windows.Forms.Panel();
+            this.labelInfo = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -71,10 +74,10 @@ namespace LayoutSnapshot
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 280F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Controls.Add(this.panelLayout, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel6, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 38);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -82,16 +85,6 @@ namespace LayoutSnapshot
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(704, 462);
             this.tableLayoutPanel5.TabIndex = 1;
-            // 
-            // panelLayout
-            // 
-            this.panelLayout.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panelLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelLayout.Location = new System.Drawing.Point(283, 3);
-            this.panelLayout.Name = "panelLayout";
-            this.panelLayout.Size = new System.Drawing.Size(418, 456);
-            this.panelLayout.TabIndex = 4;
-            this.panelLayout.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLayout_Paint);
             // 
             // tableLayoutPanel2
             // 
@@ -108,7 +101,7 @@ namespace LayoutSnapshot
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(274, 456);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(174, 456);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // buttonSnapshot
@@ -116,7 +109,7 @@ namespace LayoutSnapshot
             this.buttonSnapshot.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonSnapshot.Location = new System.Drawing.Point(3, 424);
             this.buttonSnapshot.Name = "buttonSnapshot";
-            this.buttonSnapshot.Size = new System.Drawing.Size(268, 29);
+            this.buttonSnapshot.Size = new System.Drawing.Size(168, 29);
             this.buttonSnapshot.TabIndex = 8;
             this.buttonSnapshot.Text = "Refresh";
             this.buttonSnapshot.UseVisualStyleBackColor = true;
@@ -133,7 +126,7 @@ namespace LayoutSnapshot
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(268, 29);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(168, 29);
             this.tableLayoutPanel3.TabIndex = 9;
             // 
             // buttonRemoveWindow
@@ -141,7 +134,7 @@ namespace LayoutSnapshot
             this.buttonRemoveWindow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonRemoveWindow.Location = new System.Drawing.Point(3, 3);
             this.buttonRemoveWindow.Name = "buttonRemoveWindow";
-            this.buttonRemoveWindow.Size = new System.Drawing.Size(262, 23);
+            this.buttonRemoveWindow.Size = new System.Drawing.Size(162, 23);
             this.buttonRemoveWindow.TabIndex = 1;
             this.buttonRemoveWindow.Text = "Remove Window";
             this.buttonRemoveWindow.UseVisualStyleBackColor = true;
@@ -154,7 +147,7 @@ namespace LayoutSnapshot
             this.listBoxWindows.Location = new System.Drawing.Point(3, 3);
             this.listBoxWindows.Name = "listBoxWindows";
             this.listBoxWindows.ScrollAlwaysVisible = true;
-            this.listBoxWindows.Size = new System.Drawing.Size(268, 370);
+            this.listBoxWindows.Size = new System.Drawing.Size(168, 370);
             this.listBoxWindows.TabIndex = 10;
             this.listBoxWindows.SelectedIndexChanged += new System.EventHandler(this.listBoxWindows_SelectedIndexChanged);
             // 
@@ -262,6 +255,40 @@ namespace LayoutSnapshot
             this.buttonDiscardChanges.UseVisualStyleBackColor = true;
             this.buttonDiscardChanges.Click += new System.EventHandler(this.buttonDiscardChanges_Click);
             // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 1;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.Controls.Add(this.panelLayout, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.labelInfo, 0, 1);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(183, 3);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 2;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(518, 456);
+            this.tableLayoutPanel6.TabIndex = 4;
+            // 
+            // panelLayout
+            // 
+            this.panelLayout.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panelLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelLayout.Location = new System.Drawing.Point(3, 3);
+            this.panelLayout.Name = "panelLayout";
+            this.panelLayout.Size = new System.Drawing.Size(512, 410);
+            this.panelLayout.TabIndex = 5;
+            this.panelLayout.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLayout_Paint);
+            // 
+            // labelInfo
+            // 
+            this.labelInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelInfo.Location = new System.Drawing.Point(3, 416);
+            this.labelInfo.Name = "labelInfo";
+            this.labelInfo.Size = new System.Drawing.Size(512, 40);
+            this.labelInfo.TabIndex = 6;
+            this.labelInfo.Text = "label1";
+            // 
             // FormEditProfiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -278,6 +305,7 @@ namespace LayoutSnapshot
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.tableLayoutPanel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -286,7 +314,6 @@ namespace LayoutSnapshot
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.Panel panelLayout;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button buttonNewProfile;
         private System.Windows.Forms.Button buttonDeleteProfile;
@@ -300,6 +327,9 @@ namespace LayoutSnapshot
         private System.Windows.Forms.Button buttonRemoveWindow;
         private System.Windows.Forms.ListBox listBoxWindows;
         private System.Windows.Forms.Button buttonDiscardChanges;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.Panel panelLayout;
+        private System.Windows.Forms.Label labelInfo;
     }
 }
 

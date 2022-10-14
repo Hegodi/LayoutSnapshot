@@ -65,6 +65,7 @@ namespace LayoutSnapshot
             }
             FillListOfWindowsFromData();
             CalculateDrawingScale();
+            labelInfo.Text = "";
             SetDirty(false);
 
         }
@@ -333,6 +334,15 @@ namespace LayoutSnapshot
 
         private void listBoxWindows_SelectedIndexChanged(object sender, EventArgs e)
         {
+            labelInfo.Text = "";
+            if (mLayoutSelected != null)
+            {
+                if (listBoxWindows.SelectedIndex >= 0 && listBoxWindows.SelectedIndex < mLayoutSelected.windowSnapshots.Count)
+                {
+                    WindowSnapshot wss = mLayoutSelected.windowSnapshots[listBoxWindows.SelectedIndex];
+                    labelInfo.Text = wss.Bounds + "\n" + wss.Executable;
+                }
+            }
             panelLayout.Refresh();
         }
         private void textBoxRename_TextChanged(object sender, EventArgs e)
