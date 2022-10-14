@@ -114,9 +114,8 @@ namespace LayoutSnapshot
         }
         public void Apply(Process process)
         {
-            int flag = 0x0040; // SWP_SHOWWINDOW
-            ShowWindow(process.MainWindowHandle, 1);
-            SetWindowPos(process.MainWindowHandle, 0 /*HWND_TOP*/, x, y, width, height, flag);
+            ShowWindow(process.MainWindowHandle, 1 /*SW_NORMAL*/);
+            SetWindowPos(process.MainWindowHandle, 0 /*HWND_TOP*/, x, y, width, height, 0x0040 /*SWP_SHOWWINDOW*/);
         }
 
     }

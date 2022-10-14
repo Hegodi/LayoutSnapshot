@@ -138,8 +138,8 @@ namespace LayoutSnapshot
             {
                 try
                 {
-                System.Diagnostics.Process.Start(windowSnapshot.Executable);
-                Thread.Sleep(200);
+                    System.Diagnostics.Process.Start(windowSnapshot.Executable);
+                    Thread.Sleep(200);
                 }
                 catch (Exception e)
                 {
@@ -152,7 +152,7 @@ namespace LayoutSnapshot
         private void timerCheckWindowsOpened_Tick(object sender, EventArgs e)
         {
             List<string> windowsExpected = new List<string>();
-            foreach (WindowSnapshot windowSnapshot in mProfiles[comboBoxProfiles.SelectedIndex].windowSnapshots)
+            foreach (WindowSnapshot windowSnapshot in mListWindowsToOpen)
             {
                 windowsExpected.Add(windowSnapshot.ProcessName);
             }
