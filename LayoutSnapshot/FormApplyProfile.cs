@@ -21,9 +21,11 @@ namespace LayoutSnapshot
         bool mOpeningWindows = false;
         Thread mWorkerThread = null;
         int mNumberErrorsExecutables = 0;
+        List<string> mErrorMessages;
         public FormApplyProfile()
         {
             InitializeComponent();
+            mErrorMessages = new List<string>();
             ReloadData();
         }
 
@@ -39,7 +41,7 @@ namespace LayoutSnapshot
             {
                 comboBoxProfiles.SelectedIndex = 0;
             }
-            labelLog.Text = "";
+            textBoxLog.Text = "";
         }
 
         private void Reset()
@@ -78,7 +80,7 @@ namespace LayoutSnapshot
                 Reset();
                 mWorkerThread.Abort();
                 mWorkerThread = null;
-                labelLog.Text += "Aborted\n";
+                PrintLog("Aborted");
 
             }
             else
@@ -88,7 +90,8 @@ namespace LayoutSnapshot
                     return;
                 }
 
-                labelLog.Text = "Applying profile '" + mProfiles[comboBoxProfiles.SelectedIndex].name + "' ...\n";
+                PrintLog("Applying profile '" + mProfiles[comboBoxProfiles.SelectedIndex].name + "' ...");
+                mErrorMessages.Clear();
 
                 if (checkBoxLaunchIfNotOpen.Checked)
                 {
@@ -108,7 +111,7 @@ namespace LayoutSnapshot
                         }
                     }
 
-                    labelLog.Text += "Openning missing windows ("  + mListWindowsToOpen.Count + " windows to open)\n";
+                    PrintLog("Openning missing windows (" + mListWindowsToOpen.Count + " windows to open) ...");
                     mNumberErrorsExecutables = 0;
                     mWorkerThread = new Thread(WorkerThread);
                     mWorkerThread.Start();
@@ -122,7 +125,7 @@ namespace LayoutSnapshot
                 else
                 {
                     mProfiles[comboBoxProfiles.SelectedIndex].Apply();
-                    labelLog.Text += "Done.\n";
+                    PrintLog("DONE");
                 }
             }
 
@@ -141,7 +144,7 @@ namespace LayoutSnapshot
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Command: " + windowSnapshot.Executable + " Failed: " + e.Message);
+                    mErrorMessages.Add(windowSnapshot.Executable + ": " + e.Message);
                     mNumberErrorsExecutables++;
                 }
             }
@@ -177,15 +180,21 @@ namespace LayoutSnapshot
                 mProfiles[comboBoxProfiles.SelectedIndex].Apply();
                 if (mNumberErrorsExecutables > 0)
                 {
-                    labelLog.Text += "Done (" + mNumberErrorsExecutables.ToString()  + " window failed to open).\n";
+                    foreach (string msg in mErrorMessages)
+                    {
+                        PrintLog("ERROR: " + msg);
+                    }
                 }
-                else
-                {
-                    labelLog.Text += "Done. \n";
-                }
+                for (int i=0; i<50; i++)
+                PrintLog("DONE");
                 Reset();
             }
 
+        }
+
+        void PrintLog(string txt)
+        {
+            textBoxLog.AppendText(">> " + txt + "\r\n");
         }
     }
 }

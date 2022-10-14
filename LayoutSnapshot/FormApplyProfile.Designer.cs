@@ -36,8 +36,8 @@ namespace LayoutSnapshot
             this.buttonApply = new System.Windows.Forms.Button();
             this.buttonEditProfiles = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.labelLog = new System.Windows.Forms.Label();
             this.timerCheckWindowsOpened = new System.Windows.Forms.Timer(this.components);
+            this.textBoxLog = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +50,7 @@ namespace LayoutSnapshot
             this.tableLayoutPanel1.Controls.Add(this.buttonApply, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.buttonEditProfiles, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.progressBar, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.labelLog, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxLog, 0, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -61,7 +61,7 @@ namespace LayoutSnapshot
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(285, 283);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(285, 332);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // comboBoxProfiles
@@ -99,7 +99,7 @@ namespace LayoutSnapshot
             // buttonEditProfiles
             // 
             this.buttonEditProfiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonEditProfiles.Location = new System.Drawing.Point(3, 261);
+            this.buttonEditProfiles.Location = new System.Drawing.Point(3, 310);
             this.buttonEditProfiles.Name = "buttonEditProfiles";
             this.buttonEditProfiles.Size = new System.Drawing.Size(279, 19);
             this.buttonEditProfiles.TabIndex = 3;
@@ -115,27 +115,28 @@ namespace LayoutSnapshot
             this.progressBar.Size = new System.Drawing.Size(279, 14);
             this.progressBar.TabIndex = 4;
             // 
-            // labelLog
-            // 
-            this.labelLog.AutoSize = true;
-            this.labelLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelLog.Location = new System.Drawing.Point(3, 125);
-            this.labelLog.Name = "labelLog";
-            this.labelLog.Size = new System.Drawing.Size(279, 133);
-            this.labelLog.TabIndex = 5;
-            this.labelLog.Text = "label1";
-            this.labelLog.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
             // timerCheckWindowsOpened
             // 
             this.timerCheckWindowsOpened.Interval = 500;
             this.timerCheckWindowsOpened.Tick += new System.EventHandler(this.timerCheckWindowsOpened_Tick);
             // 
+            // textBoxLog
+            // 
+            this.textBoxLog.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.textBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxLog.Location = new System.Drawing.Point(3, 128);
+            this.textBoxLog.Multiline = true;
+            this.textBoxLog.Name = "textBoxLog";
+            this.textBoxLog.ReadOnly = true;
+            this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxLog.Size = new System.Drawing.Size(279, 176);
+            this.textBoxLog.TabIndex = 5;
+            // 
             // FormApplyProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(285, 283);
+            this.ClientSize = new System.Drawing.Size(285, 332);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormApplyProfile";
@@ -155,6 +156,6 @@ namespace LayoutSnapshot
         private System.Windows.Forms.Button buttonEditProfiles;
         private System.Windows.Forms.Timer timerCheckWindowsOpened;
         private System.Windows.Forms.ProgressBar progressBar;
-        private System.Windows.Forms.Label labelLog;
+        private System.Windows.Forms.TextBox textBoxLog;
     }
 }
