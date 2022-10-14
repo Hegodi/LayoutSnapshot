@@ -29,6 +29,7 @@ namespace LayoutSnapshot
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEditProfiles));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panelLayout = new System.Windows.Forms.Panel();
@@ -267,6 +268,7 @@ namespace LayoutSnapshot
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(710, 503);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormEditProfiles";
             this.Text = "LayoutSnapshot - Edit Profiles";
             this.SizeChanged += new System.EventHandler(this.FormEditProfiles_SizeChanged);

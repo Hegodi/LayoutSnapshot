@@ -131,7 +131,6 @@ namespace LayoutSnapshot
 
         }
 
-
         void WorkerThread()
         {
 
