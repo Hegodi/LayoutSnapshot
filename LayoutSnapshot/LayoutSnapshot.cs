@@ -96,7 +96,7 @@ namespace LayoutSnapshot
             }
             catch(Exception e)
             {
-                MessageBox.Show("Error: cannot save the profile", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: cannot write the profile file (" + FileNameProfiles + ")", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -120,7 +120,7 @@ namespace LayoutSnapshot
             }
             catch(Exception e)
             {
-                MessageBox.Show("Error: cannot load the profile", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: cannot read the profile file (" + FileNameProfiles + ")", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return listLayoutSnapshots;

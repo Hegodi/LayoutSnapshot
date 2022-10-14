@@ -56,7 +56,13 @@ namespace LayoutSnapshot
             if (mLayoutSnapshots.Count == 0)
             {
                 CreateNewLayoutSnapshot();
+                SetDirty(true);
             }
+            else
+            {
+                SetDirty(true);
+            }
+
             UpdateFromLoadedData();
             if (mLayoutSnapshots.Count > 0)
             {
@@ -66,7 +72,6 @@ namespace LayoutSnapshot
             FillListOfWindowsFromData();
             CalculateDrawingScale();
             labelInfo.Text = "";
-            SetDirty(false);
 
         }
 
