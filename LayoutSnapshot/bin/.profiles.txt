@@ -1,0 +1,9 @@
+1
+Example
+3
+cmd,C:\Windows\system32\cmd.exe,19,479,993,519
+notepad,C:\Windows\system32\notepad.exe,517,0,541,492
+notepad,C:\Windows\system32\notepad.exe,-9,0,541,495
+2
+-1080,-745,1080,1920
+0,0,1920,1080

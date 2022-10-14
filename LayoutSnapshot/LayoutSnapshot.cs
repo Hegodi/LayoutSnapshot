@@ -31,9 +31,8 @@ namespace LayoutSnapshot
                     if (windowsSnapshotUnused[i].ProcessName == process.ProcessName)
                     {
                         WindowSnapshot procWin = new WindowSnapshot(process);
-                        if (procWin.IsRelevant)
+                        if (procWin.HasWindow)
                         {
-                            Console.WriteLine(process.ProcessName);
                             windowsSnapshotUnused[i].Apply(process);
                             windowsSnapshotUnused.RemoveAt(i);
                             break;
